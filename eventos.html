@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYRI - Eventos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #ececec;
+      min-height: 100vh;
+      color: #fff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .eventos-bg {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.62) blur(0.5px);
+    }
+    .eventos-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.56);
+      z-index: 1;
+    }
+    .eventos-content {
+      position: relative; z-index: 2;
+      min-height: 100vh;
+      padding: 38px 12px 30px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadein 1.2s cubic-bezier(.7,.01,.21,1) backwards;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .eventos-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      color: #ffe4c5;
+      text-align: center;
+      text-shadow: 1px 1px 8px #422c11;
+    }
+    .eventos-desc {
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 36px;
+      color: #f8ede6;
+      font-size: 1.07rem;
+      font-weight: 500;
+      text-shadow: 1px 1px 10px #1e1302;
+    }
+    .eventos-lista {
+      width: 100%;
+      max-width: 800px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 28px;
+    }
+    .evento-card {
+      background: rgba(248,237,230,0.93);
+      color: #3d2d1b;
+      border-radius: 26px;
+      box-shadow: 0 4px 20px 0 rgba(0,0,0,0.09);
+      padding: 28px 20px 18px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      animation: slidecard 1s cubic-bezier(.58,.01,.12,1) backwards;
+      opacity: 0;
+    }
+    .evento-card:nth-child(1) { animation-delay: .1s; opacity: 1;}
+    .evento-card:nth-child(2) { animation-delay: .25s; opacity: 1;}
+    .evento-card:nth-child(3) { animation-delay: .4s; opacity: 1;}
+    .evento-card:nth-child(4) { animation-delay: .55s; opacity: 1;}
+    @keyframes slidecard {
+      from { opacity: 0; transform: translateY(60px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .evento-nombre {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 0.7px;
+      color: #7d5521;
+    }
+    .evento-fecha {
+      font-size: 0.98rem;
+      color: #bf904b;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .evento-desc {
+      font-size: 1rem;
+      color: #5d4732;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      min-height: 56px;
+    }
+    .evento-btn {
+      align-self: flex-start;
+      background: #e6cda4;
+      color: #533a11;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 11px 28px;
+      border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #c9aa6d1a;
+      transition: background 0.18s, color 0.15s, transform 0.14s;
+    }
+    .evento-btn:hover, .evento-btn:focus {
+      background: #b88938;
+      color: #fff;
+      transform: scale(1.04);
+    }
+    @media (max-width: 750px) {
+      .eventos-lista {
+        grid-template-columns: 1fr;
+        gap: 26px 0;
+      }
+    }
+    @media (max-width: 500px) {
+      .eventos-title { font-size: 1.25rem;}
+      .evento-card { padding: 20px 7px 14px 12px;}
+      .eventos-desc { font-size: .97rem;}
+    }
+    .btn-volver {
+      display: block;
+      width: fit-content;
+      margin: 35px auto 0 auto;
+      background: #f8ede6;
+      color: #423626;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: bold;
+      font-size: 1.15rem;
+      padding: 16px 48px;
+      border: none;
+      border-radius: 20px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+      cursor: pointer;
+      transition: background 0.18s, color 0.15s, transform 0.16s, box-shadow 0.17s;
+    }
+    .btn-volver:hover, .btn-volver:focus {
+      background: #e6cda4;
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 6px 24px 0 rgba(180,100,25,0.11);
+    }
+  </style>
+</head>
+<body>
+  <!-- Fondo -->
+  <img class="eventos-bg" src="fondoeventos.jpg" alt="Fondo Eventos" />
+  <div class="eventos-overlay"></div>
+  <div class="eventos-content">
+    <div class="eventos-title">Eventos culturales en Cuenca</div>
+    <div class="eventos-desc">
+      Aquí encontrarás los próximos eventos, talleres, exposiciones y actividades culturales de los museos y espacios patrimoniales de Cuenca.
+    </div>
+    <div class="eventos-lista">
+      <!-- Evento 1 -->
+      <div class="evento-card">
+        <div class="evento-nombre">Noche de Museos</div>
+        <div class="evento-fecha">Viernes, 28 de junio 2025</div>
+        <div class="evento-desc">
+          Disfruta de visitas nocturnas, música en vivo y muestras de arte en los principales museos del centro histórico.
+        </div>
+        <a href="#" class="evento-btn">Ver detalles</a>
+      </div>
+      <!-- Evento 2 -->
+      <div class="evento-card">
+        <div class="evento-nombre">Taller de arte para niños</div>
+        <div class="evento-fecha">Sábado, 6 de julio 2025</div>
+        <div class="evento-desc">
+          Actividad gratuita en el Museo Remigio Crespo, incluye materiales y certificado. Cupos limitados.
+        </div>
+        <a href="#" class="evento-btn">Ver detalles</a>
+      </div>
+      <!-- Evento 3 -->
+      <div class="evento-card">
+        <div class="evento-nombre">Recorrido histórico teatralizado</div>
+        <div class="evento-fecha">Domingo, 13 de julio 2025</div>
+        <div class="evento-desc">
+          Un viaje por la historia de Cuenca de la mano de actores y guías. Punto de partida: Museo de la Ciudad.
+        </div>
+        <a href="#" class="evento-btn">Ver detalles</a>
+      </div>
+      <!-- Evento 4 -->
+      <div class="evento-card">
+        <div class="evento-nombre">Charla: Patrimonio vivo</div>
+        <div class="evento-fecha">Miércoles, 17 de julio 2025</div>
+        <div class="evento-desc">
+          Conversatorio con expertos sobre la importancia de la memoria y las tradiciones en los barrios de Cuenca.
+        </div>
+        <a href="#" class="evento-btn">Ver detalles</a>
+      </div>
+    </div>
+    <!-- Botón volver al menú -->
+    <a href="inicio.html" class="btn-volver">Volver al menú</a>
+  </div>
+</body>
+</html>
