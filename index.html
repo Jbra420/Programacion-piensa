@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AYRI - La huella cultural de Cuenca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a1a1a;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+
+        .left-panel {
+            flex: 1;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            width: 8rem;
+            height: 8rem;
+            margin-bottom: 1.5rem;
+            border-radius: 50%;
+            object-fit: contain;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #e5e5e5;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .start-button {
+            padding: 0.75rem 3rem;
+            background-color: #f8ede6;
+            color: #333;
+            font-size: 1.25rem;
+            border: none;
+            border-radius: 1rem;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .start-button:hover {
+            background-color: #f6e4ce;
+        }
+
+        .right-panel {
+            flex: 1;
+            position: relative;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .right-panel {
+                display: block;
+            }
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left, rgba(0, 0, 0, 0.6), transparent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="left-panel">
+            <img src="Logopiensa.png" alt="Logo AYRI" class="logo" />
+            <h1 class="title">AYRI</h1>
+            <p class="subtitle">La huella cultural de Cuenca</p>
+            <a href="inicio.html">
+            <button class="start-button">Inicio</button>
+            </a>
+        </div>
+
+        <div class="right-panel">
+            <img src="viejacatedral.JPG" alt="Cuenca" class="main-image" />
+            <div class="overlay"></div>
+        </div>
+    </div>
+</body>
+</html>
+    
