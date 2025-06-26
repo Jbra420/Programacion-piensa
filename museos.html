@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYRI - Museos de Cuenca</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #ececec;
+      min-height: 100vh;
+      color: #fff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .museos-bg {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.64) blur(1px);
+    }
+    .museos-overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.52);
+      z-index: 1;
+    }
+    .museos-content {
+      position: relative; z-index: 2;
+      min-height: 100vh;
+      padding: 36px 8px 20px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadein 1.1s cubic-bezier(.72,.01,.19,1) backwards;
+    }
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .museos-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+      color: #ffe4c5;
+      text-align: center;
+      text-shadow: 1px 1px 8px #422c11;
+    }
+    .museos-lista {
+      width: 100%;
+      max-width: 970px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+    .museo-card {
+      background: rgba(248,237,230,0.98);
+      color: #312510;
+      border-radius: 28px;
+      box-shadow: 0 4px 20px 0 rgba(0,0,0,0.13);
+      padding: 30px 28px 20px 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      animation: slidecard 0.8s cubic-bezier(.58,.01,.12,1) backwards;
+      opacity: 0;
+    }
+    .museo-card:nth-child(1) { animation-delay: .1s; opacity: 1;}
+    .museo-card:nth-child(2) { animation-delay: .23s; opacity: 1;}
+    .museo-card:nth-child(3) { animation-delay: .36s; opacity: 1;}
+    .museo-card:nth-child(4) { animation-delay: .49s; opacity: 1;}
+    .museo-card:nth-child(5) { animation-delay: .62s; opacity: 1;}
+    .museo-card:nth-child(6) { animation-delay: .75s; opacity: 1;}
+    @keyframes slidecard {
+      from { opacity: 0; transform: translateY(65px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .museo-nombre {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #76440a;
+      letter-spacing: .8px;
+    }
+    .museo-desc {
+      font-size: 1.05rem;
+      margin-bottom: 13px;
+      color: #3e2e14;
+      font-weight: 500;
+    }
+    .museo-curio {
+      font-size: .99rem;
+      margin-bottom: 10px;
+      color: #71541c;
+    }
+    .museo-curio span {
+      font-weight: bold;
+      color: #b88938;
+      margin-right: 4px;
+    }
+    .museo-ubic {
+      font-size: .99rem;
+      margin-bottom: 4px;
+      color: #6b6049;
+    }
+    .museo-horario {
+      font-size: .98rem;
+      margin-bottom: 3px;
+      color: #885d21;
+    }
+    .museo-mascota {
+      font-size: .97rem;
+      margin-bottom: 6px;
+      color: #ae6b33;
+    }
+    .museo-mapa {
+      margin: 16px 0 0 0;
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+    .museo-mapa iframe {
+      width: 100%;
+      min-height: 260px;
+      border-radius: 12px;
+      border: none;
+    }
+    .btn-volver {
+      display: block;
+      width: fit-content;
+      margin: 38px auto 0 auto;
+      background: #f8ede6;
+      color: #423626;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-weight: bold;
+      font-size: 1.15rem;
+      padding: 16px 48px;
+      border: none;
+      border-radius: 20px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+      cursor: pointer;
+      transition: background 0.18s, color 0.15s, transform 0.16s, box-shadow 0.17s;
+    }
+    .btn-volver:hover, .btn-volver:focus {
+      background: #e6cda4;
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 6px 24px 0 rgba(180,100,25,0.11);
+    }
+    @media (max-width: 700px) {
+      .museo-card { padding: 20px 7px 14px 12px;}
+      .museos-title { font-size: 1.15rem;}
+      .museos-lista { gap: 26px;}
+    }
+    @media (max-width: 480px) {
+      .museo-card { padding: 12px 3px 11px 5px;}
+      .museos-content { padding: 17px 2px 16px 2px;}
+    }
+
+    .museo-img {
+  width: 100%;
+  max-width: 420px;
+  max-height: 210px;
+  border-radius: 18px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 14px 0 rgba(0,0,0,0.13);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+ </style>
+</head>
+<body>
+  <img class="museos-bg" src="fondomuseos.jpg" alt="Fondo Museos" />
+  <div class="museos-overlay"></div>
+  <div class="museos-content">
+    <div class="museos-title">Museos de Cuenca</div>
+    <div class="museos-lista">
+      <!-- Museo 1 -->
+      <div class="museo-card">
+        <img src="museo1.jpg" alt="Museo Remigio Crespo Toral" class="museo-img">
+        <div class="museo-nombre">Casa Museo Remigio Crespo Toral</div>
+        <div class="museo-desc">
+          Este museo ocupa la residencia donde vivió Remigio Crespo Toral (1860–1939), figura clave en la vida intelectual y política de Cuenca. El edificio fue construido entre 1910 y 1917 y conserva gran parte de su arquitectura original —techos altos, ventanales de madera y mármoles importados. En sus salas se exhibe mobiliario de la época, retratos familiares y una colección de piezas arqueológicas de la provincia de Azuay, que conectan al visitante con las raíces cañaris de la región.
+        </div>
+        <div class="museo-curio"><span>Curiosidades:</span> Bajo el piso del salón principal se hallaron vestigios de una antigua bodega colonial.<br>
+          Tiene un mirador interior con vista al río Tomebamba, rodeado de magnolias centenarias.
+        </div>
+        <div class="museo-ubic"><span>Ubicación:</span> Calle Larga 7-27 y Presidente Borrero, Centro Histórico.</div>
+        <div class="museo-horario"><span>Horarios:</span> Martes a viernes 10:00–16:00; sábados, domingos y feriados 10:00–13:00</div>
+        <div class="museo-mascota"><span>Mascotas:</span> No se admiten (excepto animales de asistencia).</div>
+        <div class="museo-mapa">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.701777204566!2d-79.00653142522535!3d-2.9019893395262346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd18135100a1bb%3A0x10e3d2a2ea054c75!2sMuseo%20Remigio%20Crespo%20Toral!5e0!3m2!1ses!2sec!4v1750780149358!5m2!1ses!2sec" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <!-- Museo 2 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Escuela Central / Museo de la Ciudad</div>
+        <div class="museo-desc">
+          Instalado en el antiguo “Hospital de Mujeres” y luego colegio femenino La Inmaculada (fines del siglo XIX), este espacio funciona desde 2006 como museo temático. A través de paneles interactivos, maquetas y audiovisuales, narra la evolución urbana, social y cultural de Cuenca, desde su fundación en 1557 hasta la actualidad.
+        </div>
+        <div class="museo-curio"><span>Curiosidades:</span> Sus muros aún muestran inscripciones de alumnas del colegio de principios del siglo XX.<br>
+        Cuenta con una cripta oculta donde se guardaban los archivos médicos del hospital original.
+        </div>
+        <div class="museo-ubic"><span>Ubicación:</span> Esquina Gran Colombia y Benigno Malo, frente al Parque Calderón.</div>
+        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 08:00–13:00 y 15:00–18:00; sábados y domingos 10:00–14:00</div>
+        <div class="museo-mascota"><span>Mascotas:</span> No se permiten.</div>
+        <div class="museo-mapa">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2053.576712294409!2d-79.00631983803308!3d-2.896256565468275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1810e2ddb4c5%3A0x4ff37aac6cc20e2a!2sMuseo%20de%20la%20Ciudad%20-%20Cuenca!5e0!3m2!1ses!2sec!4v1750780292422!5m2!1ses!2sec" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <!-- Museo 3 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Galería de la Alcaldía</div>
+        <div class="museo-desc">
+          Situada en el ala antigua del Palacio Municipal (erigido 1923–1929), esta galería alberga exposiciones temporales de pintura, escultura, fotografía y artes audiovisuales. Su balconada interior y pisos de mosaico mantienen la estética original, ideal para muestras de arte contemporáneo y proyectos curatoriales comunitarios.
+        </div>
+        <div class="museo-curio"><span>Curiosidades:</span> Cada octubre, durante la Bienal Internacional de Arte de Cuenca, acoge la exhibición oficial “Puentes de Luz”.<br>
+          Conserva la antigua caja fuerte del Banco del Azuay, reconvertida en vitrina de objetos artísticos.
+        </div>
+        <div class="museo-ubic"><span>Ubicación:</span> Calle Presidente Borrero y Mariscal Sucre, esquina.</div>
+        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 08:00–16:30; fines de semana y feriados 10:00–13:00</div>
+        <div class="museo-mascota"><span>Mascotas:</span> No se admiten.</div>
+      </div>
+      <!-- Museo 4 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Museo Municipal de Arte Moderno “Carlos Cueva Tamariz”</div>
+        <div class="museo-desc">
+          Inaugurado el 1 de agosto de 1981, este museo es el principal referente del arte plástico contemporáneo en Azuay. Alberga más de 500 obras —pinturas, esculturas, grabados y videoarte— de la segunda mitad del siglo XX, con énfasis en corrientes como el Informalismo Andino y el Arte Concreto. Además ofrece talleres de serigrafía, ciclo de cine experimental y conversatorios con artistas invitados.
+        </div>
+        <div class="museo-curio"><span>Curiosidades:</span> Posee una serie única de lienzos de Jorge Velarde, con pigmentos obtenidos de minerales locales.<br>
+          En su patio trasero funcionan huertos de plantas nativas usados en talleres de tintes naturales.
+        </div>
+        <div class="museo-ubic"><span>Ubicación:</span> Sucre y Coronel Talbot, frente al Parque San Sebastián.</div>
+        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 09:00–16:45; sábados y domingos 09:00–17:00</div>
+        <div class="museo-mascota"><span>Mascotas:</span> No están permitidas dentro de las salas.</div>
+        <div class="museo-mapa">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7220068206075!2d-79.01393002522548!3d-2.896245539504791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd180efa982cb5%3A0xbce529de814875cb!2sMuseo%20Municipal%20de%20Arte%20Moderno!5e0!3m2!1ses!2sec!4v1750780719851!5m2!1ses!2sec" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <!-- Museo 5 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Museo de Arte Religioso “Catedral Vieja” (Iglesia del Sagrario)</div>
+        <div class="museo-desc">
+          Erigida en 1557 y ampliada hasta 1924, la Iglesia del Sagrario conserva retablos barrocos, pinturas coloniales y tallas policromadas de los siglos XVII–XVIII. Desde 1996 funciona como museo, permitiendo apreciar detalles de doraduras, pan de oro y artificios escultóricos que normalmente permanecen ocultos al público.
+        </div>
+        <div class="museo-curio"><span>Curiosidades:</span> Bajo el altar mayor se halla una cripta con restos de los primeros obispos de Cuenca.<br>
+          Su órgano original está en restauración y se usa en recitales litúrgicos ocasionales.
+        </div>
+        <div class="museo-ubic"><span>Ubicación:</span> Calle Sucre y Luis Cordero (Parroquia El Sagrario), Centro Histórico.</div>
+        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 09:00–13:00 y 14:00–16:00; sábados 09:00–13:00</div>
+        <div class="museo-mascota"><span>Mascotas:</span> No se admiten.</div>
+      </div>
+      <!-- Museo 6 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Museo Municipal de la Paja Toquilla y el Sombrero</div>
+        <div class="museo-desc">
+          Ubicado en una casona de 1880 restaurada, este espacio rescata el patrimonio intangible del tejido de paja toquilla (alias “sombrero de Panamá”). Presenta estaciones que documentan cada etapa: cosecha de la paja, curado, trenzado y acabado. Ofrece talleres gratuitos de confección y expone piezas históricas junto con sombreros de reconocidos artesanos locales.
+        </div>
+        <div class="museo-curio"><span>Curiosidades:</span> Participa en el programa “Espacio de la Memoria”, con una sala donde artesanos relatan oralmente técnicas heredadas por generaciones.<br>
+          En 2024 elaboró el “Sombrero Gigante” de 3 m de diámetro, exhibido en la Feria Internacional de Turismo.
+        </div>
+        <div class="museo-ubic"><span>Ubicación:</span> Rafael María Arízaga 7-95 y Luis Cordero, barrio El Vado.</div>
+        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 09:00–17:00; sábados 09:00–14:00</div>
+        <div class="museo-mascota"><span>Mascotas:</span> No se admiten (salvo animales de asistencia).</div>
+      </div>
+    </div>
+    <a href="inicio.html" class="btn-volver">Volver al menú</a>
+  </div>
+</body>
+</html>
