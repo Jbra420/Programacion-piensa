@@ -15,34 +15,35 @@
       position: relative;
       overflow-x: hidden;
     }
+    /* --- FONDOS Y CONTENEDORES --- */
     .museos-bg {
       position: fixed; top: 0; left: 0;
       width: 100vw; height: 100vh;
       object-fit: cover;
       z-index: 0;
-      filter: brightness(0.64) blur(1px);
+      filter: brightness(0.62) blur(0.5px);
     }
     .museos-overlay {
       position: fixed; top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.52);
+      background: rgba(0,0,0,0.56);
       z-index: 1;
     }
     .museos-content {
       position: relative; z-index: 2;
       min-height: 100vh;
-      padding: 36px 8px 20px 8px;
+      padding: 38px 12px 30px 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      animation: fadein 1.1s cubic-bezier(.72,.01,.19,1) backwards;
+      animation: fadein 1.2s cubic-bezier(.7,.01,.21,1) backwards;
     }
     @keyframes fadein {
       from { opacity: 0; transform: translateY(40px);}
       to { opacity: 1; transform: translateY(0);}
     }
     .museos-title {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 700;
       letter-spacing: 1px;
       margin-bottom: 14px;
@@ -50,90 +51,109 @@
       text-align: center;
       text-shadow: 1px 1px 8px #422c11;
     }
-    .museos-lista {
-      width: 100%;
-      max-width: 970px;
-      display: flex;
-      flex-direction: column;
-      gap: 36px;
+    .museos-desc {
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 36px;
+      color: #f8ede6;
+      font-size: 1.07rem;
+      font-weight: 500;
+      text-shadow: 1px 1px 10px #1e1302;
     }
+    .museos-grid {
+      width: 100%;
+      max-width: 980px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px 50px;
+      margin-bottom: 45px;
+    }
+    /* --- TARJETAS DE MUSEOS --- */
     .museo-card {
-      background: rgba(248,237,230,0.98);
-      color: #312510;
-      border-radius: 28px;
-      box-shadow: 0 4px 20px 0 rgba(0,0,0,0.13);
-      padding: 30px 28px 20px 28px;
-      position: relative;
+      background: rgba(248,237,230,0.97);
+      color: #3d2d1b;
+      border-radius: 32px;
+      box-shadow: 0 8px 36px 0 rgba(140,110,50,0.13);
+      padding: 34px 28px 23px 28px;
       display: flex;
       flex-direction: column;
-      animation: slidecard 0.8s cubic-bezier(.58,.01,.12,1) backwards;
+      align-items: flex-start;
+      position: relative;
+      min-width: 0;
       opacity: 0;
+      animation: museo-fadein 1s cubic-bezier(.6,.03,.22,1.08) both;
+      animation-delay: var(--delay, 0s);
+      transition: box-shadow 0.18s, transform 0.17s;
     }
     .museo-card:nth-child(1) { animation-delay: .1s; opacity: 1;}
-    .museo-card:nth-child(2) { animation-delay: .23s; opacity: 1;}
-    .museo-card:nth-child(3) { animation-delay: .36s; opacity: 1;}
-    .museo-card:nth-child(4) { animation-delay: .49s; opacity: 1;}
-    .museo-card:nth-child(5) { animation-delay: .62s; opacity: 1;}
-    .museo-card:nth-child(6) { animation-delay: .75s; opacity: 1;}
-    @keyframes slidecard {
-      from { opacity: 0; transform: translateY(65px);}
-      to { opacity: 1; transform: translateY(0);}
+    .museo-card:nth-child(2) { animation-delay: .25s; opacity: 1;}
+    .museo-card:nth-child(3) { animation-delay: .4s; opacity: 1;}
+    .museo-card:nth-child(4) { animation-delay: .55s; opacity: 1;}
+    .museo-card:nth-child(5) { animation-delay: .7s; opacity: 1;}
+    .museo-card:nth-child(6) { animation-delay: .85s; opacity: 1;}
+    @keyframes museo-fadein {
+      0% {
+        opacity: 0;
+        transform: translateY(65px) scale(0.96) rotateZ(-2deg);
+      }
+      70% {
+        opacity: .85;
+        transform: translateY(-12px) scale(1.03) rotateZ(1deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateZ(0);
+      }
+    }
+    .museo-card:hover {
+      box-shadow: 0 16px 50px 0 rgba(180,150,80,0.15), 0 1.5px 5px #0002;
+      transform: scale(1.02) translateY(-6px);
+      z-index: 2;
     }
     .museo-nombre {
-      font-size: 1.25rem;
+      font-size: 1.23rem;
       font-weight: 700;
-      margin-bottom: 8px;
-      color: #76440a;
-      letter-spacing: .8px;
-    }
-    .museo-desc {
-      font-size: 1.05rem;
-      margin-bottom: 13px;
-      color: #3e2e14;
-      font-weight: 500;
-    }
-    .museo-curio {
-      font-size: .99rem;
       margin-bottom: 10px;
-      color: #71541c;
-    }
-    .museo-curio span {
-      font-weight: bold;
-      color: #b88938;
-      margin-right: 4px;
-    }
-    .museo-ubic {
-      font-size: .99rem;
-      margin-bottom: 4px;
-      color: #6b6049;
+      letter-spacing: 0.7px;
+      color: #7d5521;
     }
     .museo-horario {
-      font-size: .98rem;
-      margin-bottom: 3px;
-      color: #885d21;
+      font-size: 1.01rem;
+      color: #bf904b;
+      font-weight: 600;
+      margin-bottom: 7px;
+      letter-spacing: 0.4px;
     }
-    .museo-mascota {
-      font-size: .97rem;
-      margin-bottom: 6px;
-      color: #ae6b33;
+    .museo-direccion {
+      font-size: 1rem;
+      color: #5d4732;
+      margin-bottom: 15px;
+      line-height: 1.5;
+      min-height: 30px;
     }
-    .museo-mapa {
-      margin: 16px 0 0 0;
-      border-radius: 12px;
-      overflow: hidden;
-      width: 100%;
-      max-width: 100%;
-    }
-    .museo-mapa iframe {
-      width: 100%;
-      min-height: 260px;
-      border-radius: 12px;
+    .museo-btn {
+      align-self: flex-start;
+      background: #e6cda4;
+      color: #533a11;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 11px 28px;
       border: none;
+      border-radius: 18px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #c9aa6d1a;
+      transition: background 0.18s, color 0.15s, transform 0.14s;
+    }
+    .museo-btn:hover, .museo-btn:focus {
+      background: #b88938;
+      color: #fff;
+      transform: scale(1.04);
     }
     .btn-volver {
       display: block;
       width: fit-content;
-      margin: 38px auto 0 auto;
+      margin: 35px auto 0 auto;
       background: #f8ede6;
       color: #423626;
       font-family: 'Montserrat', Arial, sans-serif;
@@ -154,126 +174,417 @@
       transform: scale(1.04);
       box-shadow: 0 6px 24px 0 rgba(180,100,25,0.11);
     }
-    @media (max-width: 700px) {
-      .museo-card { padding: 20px 7px 14px 12px;}
-      .museos-title { font-size: 1.15rem;}
-      .museos-lista { gap: 26px;}
+    /* --- MODAL EVENTOS Y BOTÓN FLOTANTE --- */
+    .fab-eventos {
+      position: fixed;
+      right: 32px;
+      bottom: 32px;
+      z-index: 10100;
+      background: #e6cda4;
+      border: none;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px #2d1d04b8, 0 2px 8px #d1ba8d44;
+      cursor: pointer;
+      transition: background 0.16s, transform 0.15s, box-shadow 0.16s;
+      font-size: 1.7rem;
+      outline: none;
+      animation: fabpop 0.45s cubic-bezier(.59,-0.01,.22,1.08);
     }
-    @media (max-width: 480px) {
-      .museo-card { padding: 12px 3px 11px 5px;}
-      .museos-content { padding: 17px 2px 16px 2px;}
+    @keyframes fabpop {
+      from {transform: scale(0.7) translateY(90px); opacity:0;}
+      80% {transform: scale(1.13) translateY(-10px);}
+      to   {transform: scale(1) translateY(0); opacity:1;}
     }
-
-    .museo-img {
-  width: 100%;
-  max-width: 420px;
-  max-height: 210px;
-  border-radius: 18px;
-  object-fit: cover;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 14px 0 rgba(0,0,0,0.13);
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
- </style>
+    .fab-eventos:hover,
+    .fab-eventos:focus {
+      background: #b88938;
+      transform: scale(1.10) rotate(-7deg);
+      box-shadow: 0 14px 44px #cda24ba2;
+    }
+    .fab-eventos svg {
+      display: block;
+    }
+    @media (max-width:600px) {
+      .fab-eventos { right: 14px; bottom: 14px; width: 52px; height: 52px;}
+      .fab-eventos svg { width: 23px; height: 23px; }
+    }
+    .modal-eventos {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-eventos.activo { display: flex; animation: modalIn .5s cubic-bezier(.6,.01,.19,1.05);}
+    @keyframes modalIn { from { opacity: 0; } to   { opacity: 1; } }
+    .modal-bg {
+      position: absolute;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.56);
+      left: 0; top: 0;
+      z-index: 0;
+      animation: bgIn .7s;
+    }
+    @keyframes bgIn { from{opacity:0;} to{opacity:1;} }
+    .modal-contenido {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,244,232,0.98);
+      color: #3d2d1b;
+      border-radius: 28px;
+      padding: 44px 36px 38px 36px;
+      box-shadow: 0 8px 48px 0 rgba(60,30,0,0.18);
+      min-width: 340px;
+      max-width: 96vw;
+      min-height: 270px;
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: popmodal .35s cubic-bezier(.68,.04,.25,1.17);
+    }
+    @keyframes popmodal {
+      from { transform: scale(0.92) translateY(40px); opacity: 0;}
+      80% { transform: scale(1.04) translateY(-10px);}
+      to   { transform: scale(1) translateY(0); opacity: 1;}
+    }
+    .modal-titulo {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #b88938;
+      text-align: center;
+      margin-bottom: 18px;
+      letter-spacing: 0.6px;
+    }
+    .modal-cerrar {
+      position: absolute;
+      top: 17px; right: 23px;
+      color: #ba8e45;
+      font-size: 2.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 5;
+      transition: color 0.14s;
+    }
+    .modal-cerrar:hover { color: #de5151; }
+    .modal-lista-eventos {
+      width: 99%;
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+      max-height: 60vh;
+    }
+    .evento-card {
+      background: #f8ede6;
+      border-radius: 17px;
+      box-shadow: 0 2px 14px 0 rgba(0,0,0,0.09);
+      padding: 22px 16px 13px 16px;
+      margin-bottom: 0px;
+      animation: eventoPop .5s cubic-bezier(.64,.01,.29,1.12) backwards;
+      opacity: 0;
+    }
+    .evento-card:nth-child(1) { animation-delay: .08s; opacity: 1;}
+    .evento-card:nth-child(2) { animation-delay: .19s; opacity: 1;}
+    .evento-card:nth-child(3) { animation-delay: .3s; opacity: 1;}
+    .evento-card:nth-child(4) { animation-delay: .42s; opacity: 1;}
+    @keyframes eventoPop {
+      from {opacity:0; transform: translateY(30px) scale(.98);}
+      to {opacity:1; transform: translateY(0) scale(1);}
+    }
+    .evento-nombre {
+      font-size: 1.09rem;
+      font-weight: 700;
+      color: #7d5521;
+      margin-bottom: 4px;
+    }
+    .evento-fecha {
+      font-size: .97rem;
+      color: #bf904b;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+    .evento-desc {
+      font-size: 1rem;
+      color: #5d4732;
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+    @media (max-width: 900px) {
+      .museos-grid {
+        grid-template-columns: 1fr;
+        gap: 32px 0;
+      }
+      .museo-card {
+        padding: 22px 7vw 18px 7vw;
+      }
+    }
+    @media (max-width: 500px) {
+      .museo-card {
+        padding: 13px 2vw 10px 2vw;
+      }
+    }
+  </style>
 </head>
 <body>
   <img class="museos-bg" src="fondomuseos.jpg" alt="Fondo Museos" />
   <div class="museos-overlay"></div>
   <div class="museos-content">
-    <div class="museos-title">Museos de Cuenca</div>
-    <div class="museos-lista">
-      <!-- Museo 1 -->
-      <div class="museo-card">
-        <img src="museo1.jpg" alt="Museo Remigio Crespo Toral" class="museo-img">
-        <div class="museo-nombre">Casa Museo Remigio Crespo Toral</div>
-        <div class="museo-desc">
-          Este museo ocupa la residencia donde vivió Remigio Crespo Toral (1860–1939), figura clave en la vida intelectual y política de Cuenca. El edificio fue construido entre 1910 y 1917 y conserva gran parte de su arquitectura original —techos altos, ventanales de madera y mármoles importados. En sus salas se exhibe mobiliario de la época, retratos familiares y una colección de piezas arqueológicas de la provincia de Azuay, que conectan al visitante con las raíces cañaris de la región.
-        </div>
-        <div class="museo-curio"><span>Curiosidades:</span> Bajo el piso del salón principal se hallaron vestigios de una antigua bodega colonial.<br>
-          Tiene un mirador interior con vista al río Tomebamba, rodeado de magnolias centenarias.
-        </div>
-        <div class="museo-ubic"><span>Ubicación:</span> Calle Larga 7-27 y Presidente Borrero, Centro Histórico.</div>
-        <div class="museo-horario"><span>Horarios:</span> Martes a viernes 10:00–16:00; sábados, domingos y feriados 10:00–13:00</div>
-        <div class="museo-mascota"><span>Mascotas:</span> No se admiten (excepto animales de asistencia).</div>
-        <div class="museo-mapa">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.701777204566!2d-79.00653142522535!3d-2.9019893395262346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd18135100a1bb%3A0x10e3d2a2ea054c75!2sMuseo%20Remigio%20Crespo%20Toral!5e0!3m2!1ses!2sec!4v1750780149358!5m2!1ses!2sec" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <!-- Museo 2 -->
-      <div class="museo-card">
-        <div class="museo-nombre">Escuela Central / Museo de la Ciudad</div>
-        <div class="museo-desc">
-          Instalado en el antiguo “Hospital de Mujeres” y luego colegio femenino La Inmaculada (fines del siglo XIX), este espacio funciona desde 2006 como museo temático. A través de paneles interactivos, maquetas y audiovisuales, narra la evolución urbana, social y cultural de Cuenca, desde su fundación en 1557 hasta la actualidad.
-        </div>
-        <div class="museo-curio"><span>Curiosidades:</span> Sus muros aún muestran inscripciones de alumnas del colegio de principios del siglo XX.<br>
-        Cuenta con una cripta oculta donde se guardaban los archivos médicos del hospital original.
-        </div>
-        <div class="museo-ubic"><span>Ubicación:</span> Esquina Gran Colombia y Benigno Malo, frente al Parque Calderón.</div>
-        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 08:00–13:00 y 15:00–18:00; sábados y domingos 10:00–14:00</div>
-        <div class="museo-mascota"><span>Mascotas:</span> No se permiten.</div>
-        <div class="museo-mapa">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2053.576712294409!2d-79.00631983803308!3d-2.896256565468275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1810e2ddb4c5%3A0x4ff37aac6cc20e2a!2sMuseo%20de%20la%20Ciudad%20-%20Cuenca!5e0!3m2!1ses!2sec!4v1750780292422!5m2!1ses!2sec" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <!-- Museo 3 -->
-      <div class="museo-card">
-        <div class="museo-nombre">Galería de la Alcaldía</div>
-        <div class="museo-desc">
-          Situada en el ala antigua del Palacio Municipal (erigido 1923–1929), esta galería alberga exposiciones temporales de pintura, escultura, fotografía y artes audiovisuales. Su balconada interior y pisos de mosaico mantienen la estética original, ideal para muestras de arte contemporáneo y proyectos curatoriales comunitarios.
-        </div>
-        <div class="museo-curio"><span>Curiosidades:</span> Cada octubre, durante la Bienal Internacional de Arte de Cuenca, acoge la exhibición oficial “Puentes de Luz”.<br>
-          Conserva la antigua caja fuerte del Banco del Azuay, reconvertida en vitrina de objetos artísticos.
-        </div>
-        <div class="museo-ubic"><span>Ubicación:</span> Calle Presidente Borrero y Mariscal Sucre, esquina.</div>
-        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 08:00–16:30; fines de semana y feriados 10:00–13:00</div>
-        <div class="museo-mascota"><span>Mascotas:</span> No se admiten.</div>
-      </div>
-      <!-- Museo 4 -->
-      <div class="museo-card">
-        <div class="museo-nombre">Museo Municipal de Arte Moderno “Carlos Cueva Tamariz”</div>
-        <div class="museo-desc">
-          Inaugurado el 1 de agosto de 1981, este museo es el principal referente del arte plástico contemporáneo en Azuay. Alberga más de 500 obras —pinturas, esculturas, grabados y videoarte— de la segunda mitad del siglo XX, con énfasis en corrientes como el Informalismo Andino y el Arte Concreto. Además ofrece talleres de serigrafía, ciclo de cine experimental y conversatorios con artistas invitados.
-        </div>
-        <div class="museo-curio"><span>Curiosidades:</span> Posee una serie única de lienzos de Jorge Velarde, con pigmentos obtenidos de minerales locales.<br>
-          En su patio trasero funcionan huertos de plantas nativas usados en talleres de tintes naturales.
-        </div>
-        <div class="museo-ubic"><span>Ubicación:</span> Sucre y Coronel Talbot, frente al Parque San Sebastián.</div>
-        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 09:00–16:45; sábados y domingos 09:00–17:00</div>
-        <div class="museo-mascota"><span>Mascotas:</span> No están permitidas dentro de las salas.</div>
-        <div class="museo-mapa">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7220068206075!2d-79.01393002522548!3d-2.896245539504791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd180efa982cb5%3A0xbce529de814875cb!2sMuseo%20Municipal%20de%20Arte%20Moderno!5e0!3m2!1ses!2sec!4v1750780719851!5m2!1ses!2sec" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-      <!-- Museo 5 -->
-      <div class="museo-card">
-        <div class="museo-nombre">Museo de Arte Religioso “Catedral Vieja” (Iglesia del Sagrario)</div>
-        <div class="museo-desc">
-          Erigida en 1557 y ampliada hasta 1924, la Iglesia del Sagrario conserva retablos barrocos, pinturas coloniales y tallas policromadas de los siglos XVII–XVIII. Desde 1996 funciona como museo, permitiendo apreciar detalles de doraduras, pan de oro y artificios escultóricos que normalmente permanecen ocultos al público.
-        </div>
-        <div class="museo-curio"><span>Curiosidades:</span> Bajo el altar mayor se halla una cripta con restos de los primeros obispos de Cuenca.<br>
-          Su órgano original está en restauración y se usa en recitales litúrgicos ocasionales.
-        </div>
-        <div class="museo-ubic"><span>Ubicación:</span> Calle Sucre y Luis Cordero (Parroquia El Sagrario), Centro Histórico.</div>
-        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 09:00–13:00 y 14:00–16:00; sábados 09:00–13:00</div>
-        <div class="museo-mascota"><span>Mascotas:</span> No se admiten.</div>
-      </div>
+    <h1 class="museos-title">Museos de Cuenca</h1>
+    <p class="museos-desc">
+      Aquí encontrarás los principales museos de la ciudad, su horario y ubicación. Haz clic en “Ver detalles” para descubrir más sobre cada uno.
+    </p>
+<div class="museos-grid">
+  <div class="museo-card">
+    <div class="museo-nombre">Casa Museo Remigio Crespo Toral</div>
+    <div class="museo-horario"><b>Horario:</b> Mar-Vie 10:00–16:00;<br>Sáb, Dom y feriados 10:00–13:00</div>
+    <div class="museo-direccion"><b>Dirección:</b> Calle Larga 7-27 y Presidente Borrero, Centro Histórico</div>
+    <button class="museo-btn" data-museo="crespo">Ver detalles</button>
+  </div>
+  <div class="museo-card">
+    <div class="museo-nombre">Escuela Central / Museo de la Ciudad</div>
+    <div class="museo-horario"><b>Horario:</b> Lun-Vie 08:00–13:00 y 15:00–18:00;<br>Sáb-Dom 10:00–14:00</div>
+    <div class="museo-direccion"><b>Dirección:</b> Esquina Gran Colombia y Benigno Malo, frente al Parque Calderón</div>
+    <button class="museo-btn" data-museo="central">Ver detalles</button>
+  </div>
+  <div class="museo-card">
+    <div class="museo-nombre">Museo Municipal de Arte Moderno “Carlos Cueva Tamariz”</div>
+    <div class="museo-horario"><b>Horario:</b> Lun-Vie 09:00–16:45;<br>Sáb-Dom 09:00–17:00</div>
+    <div class="museo-direccion"><b>Dirección:</b> Sucre y Coronel Talbot, frente al Parque San Sebastián</div>
+    <button class="museo-btn" data-museo="moderno">Ver detalles</button>
+  </div>
+  <div class="museo-card">
+    <div class="museo-nombre">Museo de Arte Religioso “Catedral Vieja” (Iglesia del Sagrario)</div>
+    <div class="museo-horario"><b>Horario:</b> Lun-Vie 06:00–13:00 y 14:00–17:00;<br>Sáb 00:00–17:00</div>
+    <div class="museo-direccion"><b>Dirección:</b> Calle Sucre y Luis Cordero (Parroquia El Sagrario), Centro Histórico</div>
+    <button class="museo-btn" data-museo="catedral">Ver detalles</button>
+  </div>
+  <div class="museo-card">
+    <div class="museo-nombre">Museo Municipal de la Paja Toquilla y el Sombrero</div>
+    <div class="museo-horario"><b>Horario:</b> Lun-Sáb 09:00–17:00</div>
+    <div class="museo-direccion"><b>Dirección:</b> Rafael María Arízaga 7-95 y Luis Cordero, barrio El Vado</div>
+    <button class="museo-btn" data-museo="paja">Ver detalles</button>
+  </div>
       <!-- Museo 6 -->
       <div class="museo-card">
-        <div class="museo-nombre">Museo Municipal de la Paja Toquilla y el Sombrero</div>
-        <div class="museo-desc">
-          Ubicado en una casona de 1880 restaurada, este espacio rescata el patrimonio intangible del tejido de paja toquilla (alias “sombrero de Panamá”). Presenta estaciones que documentan cada etapa: cosecha de la paja, curado, trenzado y acabado. Ofrece talleres gratuitos de confección y expone piezas históricas junto con sombreros de reconocidos artesanos locales.
-        </div>
-        <div class="museo-curio"><span>Curiosidades:</span> Participa en el programa “Espacio de la Memoria”, con una sala donde artesanos relatan oralmente técnicas heredadas por generaciones.<br>
-          En 2024 elaboró el “Sombrero Gigante” de 3 m de diámetro, exhibido en la Feria Internacional de Turismo.
-        </div>
-        <div class="museo-ubic"><span>Ubicación:</span> Rafael María Arízaga 7-95 y Luis Cordero, barrio El Vado.</div>
-        <div class="museo-horario"><span>Horarios:</span> Lunes a viernes 09:00–17:00; sábados 09:00–14:00</div>
-        <div class="museo-mascota"><span>Mascotas:</span> No se admiten (salvo animales de asistencia).</div>
+        <div class="museo-nombre">Museo y Parque Arqueológico Pumapungo</div>
+        <div class="museo-horario"><b>Horario:</b> Mar-Vie 08:00–17:00;<br>Sáb-Dom-Feriados 09:00–16:00</div>
+        <div class="museo-direccion"><b>Dirección:</b> Calle Larga y Huayna Cápac (esquina), Centro Histórico</div>
+        <button class="museo-btn">Ver detalles</button>
+      </div>
+      <!-- Museo 7 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Museo de las Culturas Aborígenes</div>
+        <div class="museo-horario"><b>Horario:</b> Lun-Vie 09:00–17:30;<br>Sáb 10:00–14:00</div>
+        <div class="museo-direccion"><b>Dirección:</b> Calle Larga 5-24, Cuenca</div>
+        <button class="museo-btn">Ver detalles</button>
+      </div>
+      <!-- Museo 8 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Casa – Museo Banco Central (Museo de la Moneda)</div>
+        <div class="museo-horario"><b>Horario:</b> Mar-Vie 09:00–17:00;<br>Sáb-Dom-Feriados 10:00–16:00</div>
+        <div class="museo-direccion"><b>Dirección:</b> Banco Central del Ecuador, Calle Larga y Av. Huayna Cápac</div>
+        <button class="museo-btn">Ver detalles</button>
+      </div>
+      <!-- Museo 9 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Museo de las Conceptas</div>
+        <div class="museo-horario"><b>Horario:</b> Lun-Sáb 10:00–17:00</div>
+        <div class="museo-direccion"><b>Dirección:</b> Hermano Miguel 6-33 y Juan Jaramillo, barrio Todos Santos</div>
+        <button class="museo-btn">Ver detalles</button>
+      </div>
+      <!-- Museo 10 -->
+      <div class="museo-card">
+        <div class="museo-nombre">Museo de la Identidad Cañari</div>
+        <div class="museo-horario"><b>Horario:</b> Lun–Vie 09:00–14:00, 15:00–18:00;<br>Sáb 09:00–14:00</div>
+        <div class="museo-direccion"><b>Dirección:</b> Presidente Córdova 626 y Hermano Miguel, barrio El Vado</div>
+        <button class="museo-btn">Ver detalles</button>
       </div>
     </div>
     <a href="inicio.html" class="btn-volver">Volver al menú</a>
   </div>
+
+  <!-- BOTÓN FLOTANTE PARA EVENTOS -->
+  <button class="fab-eventos" id="abrirModalEventos" title="Ver eventos culturales">
+    <svg width="28" height="28" fill="none" stroke="#533a11" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="6" width="18" height="16" rx="3"/>
+      <path d="M10 3v6"/><path d="M18 3v6"/><path d="M5 12h18"/>
+    </svg>
+  </button>
+<div id="modalMuseo" class="modal-eventos">
+  <div class="modal-bg"></div>
+  <div class="modal-contenido" id="modalMuseoContenido"></div>
+</div>
+  <!-- MODAL EVENTOS -->
+  <div id="modalEventos" class="modal-eventos">
+    <div class="modal-bg"></div>
+    <div class="modal-contenido">
+      <span class="modal-cerrar" id="cerrarModalEventos">&times;</span>
+      <div class="modal-titulo">Eventos culturales en Cuenca</div>
+      <div class="modal-lista-eventos">
+        <div class="evento-card">
+          <div class="evento-nombre">Noche de Museos</div>
+          <div class="evento-fecha">Viernes, 28 de junio 2025</div>
+          <div class="evento-desc">
+            Disfruta de visitas nocturnas, música en vivo y muestras de arte en los principales museos del centro histórico.
+          </div>
+        </div>
+        <div class="evento-card">
+          <div class="evento-nombre">Taller de arte para niños</div>
+          <div class="evento-fecha">Sábado, 6 de julio 2025</div>
+          <div class="evento-desc">
+            Actividad gratuita en el Museo Remigio Crespo, incluye materiales y certificado. Cupos limitados.
+          </div>
+        </div>
+        <!-- ...más eventos... -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS AL FINAL -->
+  <script>
+    // Animación delay para museos
+    document.querySelectorAll('.museo-card').forEach((el, i) => {
+      el.style.setProperty('--delay', (i * 0.13) + 's');
+    });
+
+    // Abrir y cerrar modal eventos
+    document.getElementById('abrirModalEventos').onclick = function() {
+      document.getElementById('modalEventos').classList.add('activo');
+      document.body.style.overflow = 'hidden';
+    };
+    function cerrarModalEventos() {
+      document.getElementById('modalEventos').classList.remove('activo');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('cerrarModalEventos').onclick = cerrarModalEventos;
+    document.querySelector('#modalEventos .modal-bg').onclick = cerrarModalEventos;
+    window.addEventListener('keydown', function(e) {
+      if (e.key === "Escape" && document.getElementById('modalEventos').classList.contains('activo')) {
+        cerrarModalEventos();
+      }
+    });
+  </script>
+  <script>
+const museos = {
+  crespo: {
+    nombre: "Casa Museo Remigio Crespo Toral",
+    descripcion: "Este museo ocupa la residencia donde vivió Remigio Crespo Toral (1860–1939)...",
+    curiosidades: [
+      "Bajo el piso del salón principal se hallaron vestigios de una antigua bodega colonial.",
+      "Tiene un mirador interior con vista al río Tomebamba, rodeado de magnolias centenarias."
+    ],
+    ubicacion: "Calle Larga 7-27 y Presidente Borrero, Centro Histórico",
+    horario: "Mar–Vie 10:00–16:00; Sáb, Dom y feriados 10:00–13:00",
+    imagen: "casamuseo.jpg",
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.701777204566!2d-79.00653142522535!3d-2.9019893395262346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd18135100a1bb%3A0x10e3d2a2ea054c75!2sMuseo%20Remigio%20Crespo%20Toral!5e0!3m2!1ses!2sec!4v1750780149358!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  central: {
+    nombre: "Escuela Central / Museo de la Ciudad",
+    descripcion: "Instalado en el antiguo “Hospital de Mujeres” y luego colegio femenino La Inmaculada...",
+    curiosidades: [
+      "Sus muros aún muestran inscripciones de alumnas del colegio de principios del siglo XX.",
+      "Cuenta con una cripta oculta donde se guardaban los archivos médicos del hospital original."
+    ],
+    ubicacion: "Esquina Gran Colombia y Benigno Malo, frente al Parque Calderón",
+    horario: "Lun–Vie 08:00–13:00 y 15:00–18:00; Sáb–Dom 10:00–14:00",
+    imagen: "img/central.jpg",
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2053.576712294409!2d-79.00631983803308!3d-2.896256565468275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1810e2ddb4c5%3A0x4ff37aac6cc20e2a!2sMuseo%20de%20la%20Ciudad%20-%20Cuenca!5e0!3m2!1ses!2sec!4v1750780292422!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  moderno: {
+    nombre: "Museo Municipal de Arte Moderno “Carlos Cueva Tamariz”",
+    descripcion: "Inaugurado el 1 de agosto de 1981, este museo es el principal referente del arte plástico contemporáneo en Azuay...",
+    curiosidades: [
+      "Posee una serie única de lienzos de Jorge Velarde, con pigmentos obtenidos de minerales locales.",
+      "En su patio trasero funcionan huertos de plantas nativas usados en talleres de tintes naturales."
+    ],
+    ubicacion: "Sucre y Coronel Talbot, frente al Parque San Sebastián",
+    horario: "Lun–Vie 09:00–16:45; Sáb–Dom 09:00–17:00",
+    imagen: "img/modernocuenca.jpg",
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7220068206075!2d-79.01393002522548!3d-2.896245539504791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd180efa982cb5%3A0xbce529de814875cb!2sMuseo%20Municipal%20de%20Arte%20Moderno!5e0!3m2!1ses!2sec!4v1750780719851!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+  },
+  catedral: {
+    nombre: "Museo de Arte Religioso “Catedral Vieja” (Iglesia del Sagrario)",
+    descripcion: "Erigida en 1557 y ampliada hasta 1924, la Iglesia del Sagrario conserva retablos barrocos, pinturas coloniales y tallas policromadas...",
+    curiosidades: [
+      "Bajo el altar mayor se halla una cripta con restos de los primeros obispos de Cuenca.",
+      "Su órgano original está en restauración y se usa en recitales litúrgicos ocasionales."
+    ],
+    ubicacion: "Calle Sucre y Luis Cordero (Parroquia El Sagrario), Centro Histórico",
+    horario: "Lun–Vie 09:00–13:00 y 14:00–16:00; Sáb 09:00–13:00",
+    imagen: "img/catedralvieja.jpg",
+    mapa: ""
+  },
+  paja: {
+    nombre: "Museo Municipal de la Paja Toquilla y el Sombrero",
+    descripcion: "Ubicado en una casona de 1880 restaurada, este espacio rescata el patrimonio intangible del tejido de paja toquilla...",
+    curiosidades: [
+      "Participa en el programa “Espacio de la Memoria”, con una sala donde artesanos relatan oralmente técnicas heredadas por generaciones.",
+      "En 2024 elaboró el “Sombrero Gigante” de 3 m de diámetro, exhibido en la Feria Internacional de Turismo."
+    ],
+    ubicacion: "Rafael María Arízaga 7-95 y Luis Cordero, barrio El Vado",
+    horario: "Lun–Vie 09:00–17:00; Sáb 09:00–14:00",
+    imagen: "img/pajatoquilla.jpg",
+    mapa: ""
+  }
+};
+document.querySelectorAll('.museo-btn[data-museo]').forEach(btn => {
+  btn.onclick = function() {
+    let m = museos[btn.dataset.museo];
+    if (!m) return;
+document.getElementById('modalMuseoContenido').innerHTML = `
+  <span class="modal-cerrar" id="cerrarModalMuseo">&times;</span>
+  <div style="text-align:center; margin-bottom:10px;">
+    <img src="${m.imagen}" alt="${m.nombre}"
+      style="max-width:320px; max-height:180px; width:auto; height:auto; border-radius:18px; box-shadow:0 2px 10px #0002; margin-bottom:14px; object-fit:cover; cursor:zoom-in;"
+      onclick="window.open(this.src, '_blank'); document.getElementById('modalMuseo').classList.remove('activo'); document.body.style.overflow='';">
+  </div>
+  <div style="text-align:center; font-size:1.25rem; font-weight:700; color:#b88938; margin-bottom:8px;">
+    ${m.nombre}
+  </div>
+  <div style="text-align:center; margin-bottom:5px; color:#8d723b;">
+    <b>Mar–Vie 10:00–16:00; Sáb, Dom y feriados 10:00–13:00</b>
+  </div>
+  <div style="text-align:center; font-size:1rem; color:#6a5b39; margin-bottom:13px;">
+    <b>Dirección:</b> ${m.ubicacion}
+  </div>
+  <div style="margin:0 auto 14px auto; max-width:430px; color:#6a5b39; font-size:1.07rem;">
+    ${m.descripcion}
+  </div>
+  <ul style="margin:0 auto 17px 12px; padding-left:13px; max-width:430px; color:#b88938; font-size:1.03rem;">
+    ${m.curiosidades.map(c => `<li style="margin-bottom:6px;">${c}</li>`).join('')}
+  </ul>
+  <div style="margin:0 auto; background:#fff8f0; border-radius:14px; box-shadow:0 2px 8px #0001; width:95%; max-width:430px; overflow:hidden;">
+    ${m.mapa || ""}
+  </div>
+`;
+    document.getElementById('modalMuseo').classList.add('activo');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('cerrarModalMuseo').onclick = () => {
+      document.getElementById('modalMuseo').classList.remove('activo');
+      document.body.style.overflow = '';
+    };
+    document.querySelector('#modalMuseo .modal-bg').onclick = () => {
+      document.getElementById('modalMuseo').classList.remove('activo');
+      document.body.style.overflow = '';
+    };
+    window.addEventListener('keydown', function handler(e) {
+      if (e.key === "Escape") {
+        document.getElementById('modalMuseo').classList.remove('activo');
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handler);
+      }
+    });
+  };
+});
+</script>
 </body>
 </html>
