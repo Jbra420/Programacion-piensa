@@ -408,7 +408,7 @@
   <div class="museos-content">
     <h1 class="museos-title">Museos de Cuenca</h1>
     <p class="museos-desc">
-      Aquí encontrarás los principales museos de la ciudad, su horario y ubicación. Haz clic en “Ver detalles” para descubrir más sobre cada uno.
+    ¿Listo para una aventura cultural? Conoce los museos más top de Cuenca. Mira horarios, direcciones y haz clic en “Ver detalles” para no perderte nada.
     </p>
 <div class="museos-grid">
   <!-- 1 -->
@@ -444,7 +444,7 @@
   <!-- 6 -->
   <div class="museo-card">
     <div class="museo-nombre">Museo y Parque Arqueológico Pumapungo</div>
-    <img src="assets/Img/pumapungo.png" alt="Museo y Parque Arqueológico Pumapungo" class="museo-thumb">
+    <img src="assets/Img/museopum.png" alt="Museo y Parque Arqueológico Pumapungo" class="museo-thumb">
     <button class="museo-btn" data-museo="pumapungo">Ver detalles</button>
   </div>
   <!-- 7 -->
@@ -456,7 +456,7 @@
   <!-- 8 -->
   <div class="museo-card">
     <div class="museo-nombre">Casa – Museo Banco Central (Museo de la Moneda)</div>
-    <img src="assets/Img/bancoc.jpg" alt="Casa – Museo Banco Central" class="museo-thumb">
+    <img src="assets/Img/monedasxd.png" alt="Casa – Museo Banco Central" class="museo-thumb">
     <button class="museo-btn" data-museo="moneda">Ver detalles</button>
   </div>
   <!-- 9 -->
@@ -467,8 +467,8 @@
   </div>
   <!-- 10 -->
   <div class="museo-card">
-    <div class="museo-nombre">Museo de la Identidad Cañari</div>
-    <img src="assets/Img/cañari.jpg" alt="Museo de la Identidad Cañari" class="museo-thumb">
+    <div class="museo-nombre">Museo de las Artes del Fuego</div>
+    <img src="assets/Img/fuego.png" alt="Museo de las Artes del Fuego" class="museo-thumb">
     <button class="museo-btn" data-museo="canari">Ver detalles</button>
   </div>
 </div>
@@ -538,7 +538,6 @@
   </script>
   <script>
 
-// Objeto con la información de todos los museos
 const museos = {
   crespo: {
     nombre: "Casa Museo Remigio Crespo Toral",
@@ -558,7 +557,7 @@ const museos = {
   central: {
     nombre: "Escuela Central / Museo de la Ciudad",
     descripcion: "Instalado en el antiguo “Hospital de Mujeres” y luego colegio femenino La Inmaculada, este museo narra la historia de Cuenca desde su fundación.",
-    descripcionCompleta: "", // <-- Agrega aquí la descripción larga si la tienes
+    descripcionCompleta: "este espacio funciona desde 2006 como museo temático. A través de paneles interactivos, maquetas y audiovisuales, narra la evolución urbana, social y cultural de Cuenca, desde su fundación en 1557 hasta la actualidad",
     curiosidades: [
       "Sus muros aún muestran inscripciones de alumnas del colegio de principios del siglo XX.",
       "Cuenta con una cripta oculta donde se guardaban los archivos médicos del hospital original."
@@ -573,7 +572,7 @@ const museos = {
   moderno: {
     nombre: "Museo Municipal de Arte Moderno “Carlos Cueva Tamariz”",
     descripcion: "Inaugurado en 1981, este museo es el principal referente del arte plástico contemporáneo en Azuay y el Austro ecuatoriano.",
-    descripcionCompleta: "Ubicado en la histórica Casa de la Temperancia, el museo alberga una importante colección de artistas nacionales e internacionales. Sus exposiciones rotativas y bienales de arte lo convierten en un espacio dinámico y fundamental para la cultura contemporánea de la ciudad.",
+    descripcionCompleta: "Alberga más de 500 obras —pinturas, esculturas, grabados y videoarte— de la segunda mitad del siglo XX, con énfasis en corrientes como el Informalismo Andino y el Arte Concreto. Además ofrece talleres de serigrafía, ciclo de cine experimental y conversatorios con artistas invitados de renombre nacional e internacional.",
     curiosidades: [
       "Posee una serie única de lienzos de Jorge Velarde, con pigmentos obtenidos de minerales locales.",
       "En su patio trasero funcionan huertos de plantas nativas usados en talleres de tintes naturales."
@@ -588,75 +587,87 @@ const museos = {
   catedral: {
     nombre: "Museo de Arte Religioso “Catedral Vieja” (Iglesia del Sagrario)",
     descripcion: "Erigida en 1557, la Iglesia del Sagrario conserva retablos barrocos, pinturas coloniales y tallas policromadas...",
-    descripcionCompleta: "Como la primera catedral de la ciudad, este museo-iglesia es un testimonio vivo de la fe y el arte de la Cuenca colonial. Sus naves albergan un órgano de fuelles del siglo XVIII, impresionantes retablos tallados a mano y una colección de esculturas y pinturas de la Escuela Quiteña. Es un lugar de profundo valor histórico y espiritual.",
+    descripcionCompleta: "de los siglos XVII–XVIII. Desde 1996 funciona como museo, permitiendo apreciar detalles de doraduras, pan de oro y artificios escultóricos que normalmente permanecen ocultos al público.",
     curiosidades: ["Bajo el altar mayor se halla una cripta con restos de los primeros obispos de Cuenca.", "Su órgano original está en restauración y se usa en recitales litúrgicos ocasionales."],
     ubicacion: "Calle Sucre y Luis Cordero (Parroquia El Sagrario), Centro Histórico",
     horario: "Lun–Vie 09:00–13:00 y 14:00–16:00; Sáb 09:00–13:00",
     imagen: "assets/Img/kvieja.png",
-    mapa: "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7108033812933!2d-79.00934632522532!3d-2.8994279395166647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd18115db2ffb1%3A0xa34a065335a1ca8f!2sIglesia%20del%20Sagrario%20(Antigua%20Catedral%20de%20Cuenca)!5e0!3m2!1ses!2sec!4v1750903195382!5m2!1ses!2sec\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+      mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7108033812933!2d-79.00934632522532!3d-2.8994279395166647!2m3!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd18115db2ffb1%3A0xa34a065335a1ca8f!2sIglesia%20del%20Sagrario%20(Antigua%20Catedral%20de%20Cuenca)!5e0!3m2!1ses!2sec!4v1750903195382!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
     costo: "Adultos: $2.00, Niños: $1.00",
     mascotas: false
   },
   paja: {
     nombre: "Museo Municipal de la Paja Toquilla y el Sombrero",
     descripcion: "Ubicado en una casona de 1880 restaurada, este espacio rescata el patrimonio intangible del tejido de paja toquilla...",
-    descripcionCompleta: "",
-    curiosidades: ["Participa en el programa “Espacio de la Memoria”, con artesanos que relatan técnicas heredadas.", "En 2024 elaboró el “Sombrero Gigante” de 3 m de diámetro."],
+    descripcionCompleta: "(alias “sombrero de Panamá”). Presenta estaciones que documentan cada etapa: cosecha de la paja, curado, trenzado y acabado. Ofrece talleres gratuitos de confección y expone piezas históricas junto con sombreros de reconocidos artesanos locales y nacionales.",
+    curiosidades: ["Participa en el programa \"Espacio de la Memoria\", con artesanos que relatan técnicas heredadas.", "En 2024 elaboró el \"Sombrero Gigante\" de 3 m de diámetro."],
     ubicacion: "Rafael María Arízaga 7-95 y Luis Cordero, barrio El Vado",
     horario: "Lun–Vie 09:00–17:00; Sáb 09:00–14:00",
     imagen: "assets/Img/pajat.png",
-    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7969.480890354356!2d-79.0119719064209!3d-2.8910003999999874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd18197ff00c4d%3A0xdd4e3180b594198d!2sMuseo%20Municipal%20de%20la%20Paja%20Toquilla%20y%20el%20Sombrero!5e0!3m2!1ses!2sec!4v1750903331041!5m2!1ses!2sec" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7969.480890354356!2d-79.0119719064209!3d-2.8910003999999874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd18197ff00c4d%3A0xdd4e3180b594198d!2sMuseo%20Municipal%20de%20la%20Paja%20Toquilla%20y%20el%20Sombrero!5e0!3m2!1ses!2sec!4v1750903331041!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
     costo: "Entrada libre",
     mascotas: false
   },
   aborigenes: {
     nombre: "Museo de las Culturas Aborígenes",
-    descripcion: "Colección privada con más de 5.000 piezas arqueológicas de culturas precolombinas del Ecuador.",
+    descripcion: "Dedicado a las culturas preincaicas y andinas del Ecuador austral, el museo presenta piezas de orfebrería, cerámica y textiles junto con reconstrucciones de espacios ceremoniales.",
     descripcionCompleta: "",
-    curiosidades: ["Incluye cerámica de la cultura Valdivia, una de las más antiguas de América.", "El museo fue fundado por el arqueólogo Juan Cordero Iñiguez."],
+    curiosidades: ["Incluye salas interactivas para aprendizaje infantil y audiovisual documental.", "Su colección de máscaras rituales es una de las más completas del país."],
     ubicacion: "Calle Larga 5-24 y Hermano Miguel",
     horario: "Lun–Sáb 09:00–18:00",
     imagen: "assets/Img/aborigenes1.png",
-    mapa: "",
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.700068195491!2d-79.00276706171826!3d-2.902474058662071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd1814a7f6a8d5%3A0xd6f58275cc424ba0!2sMuseo%20de%20las%20Culturas%20Aborigenes!5e0!3m2!1ses!2sec!4v1750903751752!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
     costo: "Adultos: $4.00, Estudiantes: $2.00",
     mascotas: false
   },
   moneda: {
     nombre: "Casa – Museo Banco Central (Museo de la Moneda)",
     descripcion: "Muestra la historia monetaria y bancaria del Ecuador, con exposiciones de monedas y billetes antiguos.",
-    descripcionCompleta: "",
+    descripcionCompleta: "Reinaugurado en noviembre de 2023, este museo numismático ofrece un recorrido interactivo por la historia del dinero ecuatoriano: desde piezas premonetarias hasta el fin del sucre. Cuenta con pantallas táctiles, maquetas de acuñación y colecciones de monedas raras y billetes históricos.",
     curiosidades: ["El edificio fue una antigua fábrica de hilados.", "Incluye una bóveda original de la época republicana."],
     ubicacion: "Calle Larga y Huayna Cápac",
     horario: "Lun–Vie 09:00–17:00",
-    imagen: "assets/Img/bancoc.jpg", mapa: "", costo: "Entrada libre", mascotas: false
-  },
+    imagen: "assets/Img/monedasxd.png", 
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.688491648104!2d-78.9997269252253!3d-2.9057553395403244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd186a7f28db8d%3A0x3b349d6dde22b3fa!2sMuseo%20de%20la%20Moneda%20Cuenca!5e0!3m2!1ses!2sec!4v1750903914906!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`, 
+    costo: "Entrada libre", 
+    mascotas: false
+  }, 
   conceptas: {
     nombre: "Museo de las Conceptas",
     descripcion: "Ubicado en un convento del siglo XVIII, alberga obras de arte religioso y objetos históricos.",
-    descripcionCompleta: "",
+    descripcionCompleta: "Instalado en el antiguo Monasterio de la Concepción —fundado en 1592— este museo ofrece un recorrido por la vida monástica femenina en Cuenca. Sus salas recrean espacios originales como la panadería, las celdas de las religiosas y la sala de bordados, exhibiendo cuadros, esculturas y enseres litúrgicos de los siglos XVII al XIX.",
     curiosidades: ["El convento fue fundado por la orden de las Conceptas en 1684.", "Su claustro es uno de los mejor conservados del país."],
     ubicacion: "Calle Larga y Coronel Talbot",
     horario: "Lun–Vie 09:00–17:00; Sáb 09:00–14:00",
-    imagen: "assets/Img/conceptas1.png", mapa: "", costo: "Adultos: $3.50, Estudiantes: $2.00", mascotas: false
+    imagen: "assets/Img/conceptas1.png", 
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7080642031165!2d-79.0074166522243!3d-2.9002054876855246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd181387bcfa9f%3A0x38a2559f3cafb8d1!2sMuseo%20de%20las%20Madres%20Conceptas!5e0!3m2!1ses!2sec!4v1750905155055!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`, 
+    costo: "Adultos: $3.50, Estudiantes: $2.00", 
+    mascotas: false
   },
-   pumapungo: {
+  pumapungo: {
     nombre: "Museo y Parque Arqueológico Pumapungo",
     descripcion: "Museo nacional con salas etnográficas y un parque arqueológico de la cultura Cañari-Inca.",
-    descripcionCompleta: "",
+    descripcionCompleta: "En el museo se exhiben cerámicas, metales y textiles precolombinos; en el parque se recorren las ruinas originales —canales de riego, muros de roca volcánica y plataformas arquitectónicas— que dieron nombre al lugar: Pumapungo, “Puerta de León”",
     curiosidades: ["Incluye un aviario con especies nativas.", "El parque tiene ruinas de templos y canales incas."],
     ubicacion: "Calle Larga y Av. Huayna Cápac",
     horario: "Mar–Vie 08:00–17:00; Sáb–Dom 10:00–16:00",
-    imagen: "assets/Img/pumapungo.png", mapa: "", costo: "Entrada libre", mascotas: false
+    imagen: "assets/Img/museopum.png", 
+    mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.688491648104!2d-78.9997269252253!3d-2.9057553395403244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd186a7f28db8d%3A0x3b349d6dde22b3fa!2sMuseo%20de%20la%20Moneda%20Cuenca!5e0!3m2!1ses!2ec!4v1750903914906!5m2!1ses!2ec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`, 
+    costo: "Entrada libre",
+    mascotas: false
   },
-  canari: {
-    nombre: "Museo de la Identidad Cañari",
-    descripcion: "Espacio dedicado a la cultura Cañari, con piezas arqueológicas y exposiciones etnográficas.",
-    descripcionCompleta: "",
-    curiosidades: ["Organiza talleres de lengua y tradiciones Cañari.", "Exhibe vestimenta y herramientas ancestrales."],
-    ubicacion: "Av. Huayna Cápac y Calle Larga",
-    horario: "Lun–Vie 09:00–17:00",
-    imagen: "assets/Img/cañari.jpg", mapa: "", costo: "Entrada libre", mascotas: false
-  }
+canari: {
+  nombre: "Museo de las Artes del Fuego",
+  descripcion: "Dedicado a las técnicas del fuego en la creación artística: cerámica, vidrio soplado y metalurgia. Exhibe hornos históricos y piezas contemporáneas de artistas locales.",
+  descripcionCompleta: "El museo presenta una colección de objetos relacionados con el fuego, incluyendo cerámicas, textiles y herramientas utilizadas en rituales. También se ofrecen talleres sobre técnicas ancestrales de trabajo con fuego.",
+  curiosidades: ["Organiza talleres de lengua y tradiciones Cañari.", "Exhibe vestimenta y herramientas ancestrales."],
+  ubicacion: "Av. Huayna Cápac y Calle Larga",
+  horario: "Lun–Vie 09:00–17:00",
+  imagen: "assets/Img/fuego.png", 
+   mapa: `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.6637986304227!2d-78.99746472522529!3d-2.9127420395665005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd185d2fcf3d0f%3A0x91f15f27915b7bcf!2sMuseo%20de%20las%20Artes%20del%20Fuego!5e0!3m2!1ses!2sec!4v1750906880336!5m2!1ses!2sec" width="100%" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`,
+  costo: "Adultos: $2.00, Estudiantes: $1.00",
+  mascotas: false // <--- aquí ya NO pongas coma
+}
 };
 
 

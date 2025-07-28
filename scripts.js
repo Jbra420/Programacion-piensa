@@ -33,4 +33,5 @@ document.addEventListener('DOMContentLoaded', () => {
       // Aquí puedes agregar lógica de login real, guardar en localStorage, etc.
     });
   }
+  
 });
